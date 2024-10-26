@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Surprise!</title>
+    <style>
+        /* Center the content and set up a background color */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #fbe7fc;
+            font-family: Arial, sans-serif;
+            color: #7b2cbf;
+            text-align: center;
+        }
+        /* Initial hidden state for the messages */
+        .message {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            font-size: 1.8em;
+        }
+        .visible { opacity: 1; }
+        #final-message {
+            font-size: 2.5em;
+            color: #e94560;
+            font-weight: bold;
+        }
+        /* Animation for final message */
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        .animated-bounce { animation: bounce 0.5s infinite; }
+    </style>
+</head>
+<body>
+
+    <!-- Messages with hidden visibility initially -->
+    <div>
+        <div id="message1" class="message">🎉 Shhh... something magical is about to happen 🎉</div>
+        <div id="message2" class="message">Close your eyes, make a wish, and imagine the happiest of days...</div>
+        <div id="message3" class="message">Because today is all about YOU! 🌟</div>
+        <div id="message4" class="message">Get ready for joy, laughter, and a day full of love...</div>
+        <div id="final-message" class="message">Happy Birthday! 🎂🥳 May all your dreams come true! ❤️</div>
+    </div>
+
+    <script>
+        // Function to show each message in sequence with a delay
+        function showMessages() {
+            const messages = document.querySelectorAll('.message');
+            messages.forEach((message, index) => {
+                setTimeout(() => {
+                    message.classList.add('visible');
+                    // Add a bouncing effect to the final message
+                    if (index === messages.length - 1) {
+                        message.classList.add('animated-bounce');
+                    }
+                }, index * 2000); // Delay each message by 2 seconds
+            });
+        }
+        // Trigger the function on page load
+        window.onload = showMessages;
+    </script>
+
+</body>
+</html>
